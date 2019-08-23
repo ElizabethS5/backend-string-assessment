@@ -18,8 +18,12 @@
 
 
 def verbing(s):
-    """Your code goes here.  Edit this docstring."""
-    return
+    if len(s) < 3:
+        return s
+    elif s[-3:] == "ing":
+        return s + "ly"
+    else:
+        return s + "ing"
 
 
 # E. not_bad
@@ -31,8 +35,18 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    """Your code goes here.  Edit this docstring."""
-    return
+    if "not" in s:
+        not_index = s.find("not")
+    else:
+        return s
+    if "bad" in s:
+        bad_index = s.find("bad")
+    else:
+        return s
+    if not_index < bad_index:
+        return s[:not_index] + "good" + s[bad_index + len("bad"):]
+    else:
+        return s
 
 
 # F. front_back
@@ -43,8 +57,13 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    """Your code goes here.  Edit this docstring."""
-    return
+    a_half = len(a)//2
+    b_half = len(b)//2
+    if len(a) % 2:
+        a_half = a_half + 1
+    if len(b) % 2:
+        b_half = b_half + 1
+    return a[:a_half] + b[:b_half] + a[a_half:] + b[b_half:]
 
 
 # Provided simple test() function used in main() to print
